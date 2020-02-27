@@ -23,3 +23,12 @@ spec:
               "image":"$(inputs.resources.image.url)"
             }]
           }}}}'
+
+          sleep 10
+          
+          oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
+            "containers":[{
+              "name": "$(inputs.params.deployment)",
+              "image":"$(inputs.resources.image.url)"
+            }]
+          }}}}'
