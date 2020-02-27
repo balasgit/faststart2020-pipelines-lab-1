@@ -17,18 +17,5 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - |-
-          oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
-            "containers":[{
-              "name": "$(inputs.params.deployment)",
-              "image":"$(inputs.resources.image.url)"
-            }]
-          }}}}'
-
-          sleep 10
-          
-          oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
-            "containers":[{
-              "name": "$(inputs.params.deployment)",
-              "image":"$(inputs.resources.image.url)"
-            }]
-          }}}}'
+          oc delete pod -l app=ui
+          oc set image deployment/$(inputs.params.deployment) "$(inputs.params.deployment)=$(inputs.resources.image.url)"
