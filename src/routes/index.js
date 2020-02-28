@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SW Brownbag Session 2020 Feb ' });
+  res.render('index', { title: 'SW Brownbag Session 2020 - 28th Feb' });
 });
 
 module.exports = router;
